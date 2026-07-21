@@ -13,9 +13,9 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"></noscript>
 
   <style>
-    /* 核心样式直接内联，保证打开网页 0.01 秒内瞬间渲染出 Loader，不等待外部资源 */
+    /* 已补充手机端兼容字体：Songti SC 和 Noto Serif CJK SC */
     html,body{height:100%;margin:0;padding:0;overflow:hidden}
-    body{font-family:"STKaiti","KaiTi","SimKai",Georgia,serif;background-color:#1B2A23;color:#E2ECE5;-webkit-font-smoothing:antialiased}
+    body{font-family:"STKaiti","KaiTi","SimKai","Songti SC","Noto Serif CJK SC",Georgia,serif;background-color:#1B2A23;color:#E2ECE5;-webkit-font-smoothing:antialiased}
     body.loaded{overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
     
     #loader{position:fixed;top:0;left:0;width:100vw;height:100vh;background:radial-gradient(circle at 50% 50%,#25382F 0,#1B2A23 70%,#14201A 100%);z-index:100;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1.2s cubic-bezier(.4,0,.2,1),visibility 1.2s ease}
@@ -268,9 +268,9 @@
   </div>
 
   <script>
-    // 取消了 2000ms 的强行等待，只要页面基础加载完成，立刻 (0ms) 触发进入！
+    /* 已将 threshold 修改为 .1 (10%)，确保在手机端只要露出一点就能触发动效 */
     window.addEventListener("load",(()=>{setTimeout((()=>{document.body.classList.add("loaded")}),0)}));
-    document.addEventListener("DOMContentLoaded",(()=>{const e=document.querySelectorAll(".page-section"),t={root:null,threshold:.4},s=new IntersectionObserver((e=>{e.forEach((e=>{e.isIntersecting?e.target.classList.add("active"):e.target.classList.remove("active")}))}),t);e.forEach((e=>{s.observe(e)}))}));
+    document.addEventListener("DOMContentLoaded",(()=>{const e=document.querySelectorAll(".page-section"),t={root:null,threshold:.1},s=new IntersectionObserver((e=>{e.forEach((e=>{e.isIntersecting?e.target.classList.add("active"):e.target.classList.remove("active")}))}),t);e.forEach((e=>{s.observe(e)}))}));
   </script>
 </body>
 </html>
