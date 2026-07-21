@@ -11,7 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
   <style>
-    /* 1. 字体声明 */
+    /* 1. 字体声明与防乱码优化 */
     body {
       font-family: "STKaiti", "KaiTi", "SimKai", Georgia, serif;      
       background-color: #1B2A23; 
@@ -28,10 +28,12 @@
       overflow: hidden;
       border-radius: 2px;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-      background-color: rgba(255, 255, 255, 0.03);
+      background-color: rgba(255, 255, 255, 0.02);
+      /* 兜底高度 */
+      min-height: 150px;
     }
 
-    /* 强制指定各种长宽比 */
+    /* 强制指定各种长宽比，防止塌陷 */
     .ratio-3-2 { aspect-ratio: 3 / 2; }
     .ratio-16-9 { aspect-ratio: 16 / 9; }
     .ratio-3-4 { aspect-ratio: 3 / 4; }
@@ -49,7 +51,7 @@
       transform: scale(1.05);
     }
 
-    /* 3. 竹影背景与诗文布局 */
+    /* 3. 背景与布局 */
     #bamboo-bg {
       position: fixed;
       top: 0;
@@ -187,7 +189,7 @@
           <div class="grid grid-cols-12 gap-6 items-center">
             <div class="col-span-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">用心若镜，圣物不伤，<br/>照物不染，物过不留。</p></div>
             <div class="col-span-6 flex justify-end">
-              <div class="img-container ratio-3-2 max-w-sm">
+              <div class="img-container ratio-3-2 max-sm: max-w-sm">
                 <img src="DSC_3115.jpg" alt="拂往图2" />
               </div>
             </div>
@@ -384,10 +386,10 @@
 
     <section class="page-section px-6 md:px-20">
       <div class="section-content relative flex flex-col justify-center items-center">
-        <div class="text-center space-y-6 select-none my-auto">
-          <h2 class="text-5xl md:text-7xl font-normal tracking-[0.5em] text-[#EDF4EF] opacity-90">沐林</h2>
-          <div class="w-16 h-[1px] bg-emerald-200/30 mx-auto my-6"></div>
-          <p class="text-base md:text-xl tracking-[0.6em] text-[#A2B8AA] font-light">原创诗文与影集</p>
+        <div class="text-center select-none my-auto">
+          <h2 class="text-5xl md:text-7xl font-normal tracking-[0.5em] text-[#EDF4EF] opacity-90 mx-auto">沐林</h2>
+          
+          <p class="text-base md:text-xl tracking-[0.6em] text-[#A2B8AA] font-light mt-10">原创诗文与影集</p>
         </div>
         <footer class="absolute bottom-10 text-center opacity-40 text-[10px] tracking-[0.5em] text-[#A2B8AA]">
           © JOYSPACE ARCHIVE. ALL RIGHTS RESERVED.
