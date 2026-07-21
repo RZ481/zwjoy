@@ -5,41 +5,363 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Joyspace - 栖居沐林空间</title>
+  
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    body { font-family: "STKaiti", "KaiTi", "SimKai", Georgia, serif; background-color: #1B2A23; color: #E2ECE5; margin: 0; overflow-x: auto; -webkit-font-smoothing: antialiased; }
-    .img-wrapper { position: relative; width: 100%; border-radius: 2px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4); background-color: rgba(255,255,255,0.05); display: block; }
+    body { 
+      font-family: "STKaiti", "KaiTi", "SimKai", Georgia, serif; 
+      background-color: #1B2A23; 
+      color: #E2ECE5; 
+      margin: 0; 
+      overflow-x: auto; 
+      -webkit-font-smoothing: antialiased; 
+    }
+    .img-wrapper { 
+      position: relative; 
+      width: 100%; 
+      border-radius: 2px; 
+      overflow: hidden; 
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4); 
+      background-color: rgba(255,255,255,0.03); 
+      display: block; 
+    }
     .ratio-3-2 { aspect-ratio: 3 / 2; }
     .ratio-16-9 { aspect-ratio: 16 / 9; }
     .ratio-3-4 { aspect-ratio: 3 / 4; }
     .ratio-banner { aspect-ratio: 21 / 6; }
-    .img-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
-    .img-wrapper:hover img { transform: scale(1.04); }
-    #bamboo-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; background: radial-gradient(circle at 50% 50%, #25382F 0%, #1B2A23 70%, #14201A 100%); overflow: hidden; }
-    .poem-text { letter-spacing: 0.18em; line-height: 2; }
-    .page-section { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10; padding: 6rem 0; box-sizing: border-box; }
-    .section-content { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    
+    .img-wrapper img { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      display: block; 
+      transition: transform 0.7s ease, opacity 0.5s ease; 
+    }
+    .img-wrapper:hover img { 
+      transform: scale(1.04); 
+    }
+    #bamboo-bg { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100vw; 
+      height: 100vh; 
+      z-index: 0; 
+      pointer-events: none; 
+      background: radial-gradient(circle at 50% 50%, #25382F 0%, #1B2A23 70%, #14201A 100%); 
+      overflow: hidden; 
+    }
+    .poem-text { 
+      letter-spacing: 0.18em; 
+      line-height: 2; 
+    }
+    .page-section { 
+      position: relative; 
+      width: 100%; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      z-index: 10; 
+      padding: 6rem 0; 
+      box-sizing: border-box; 
+    }
+    .section-content { 
+      width: 100%; 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 0 1.5rem; 
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-emerald-900 selection:text-emerald-100">
   <div id="bamboo-bg"></div>
+  
   <header id="main-header" class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 flex justify-between items-center opacity-90">
     <span class="text-lg tracking-[0.3em] font-normal text-[#A2B8AA]">JOYSPACE</span>
     <span class="text-xs tracking-[0.3em] text-[#6C8A72]">诗文与影集</span>
   </header>
+
   <div id="main-container" class="relative z-10 w-full">
-    <section class="page-section"><div class="section-content text-center"><div class="space-y-8 max-w-3xl mx-auto select-none"><h1 class="text-4xl md:text-6xl font-normal tracking-[0.4em] text-[#EDF4EF]">沐林空间</h1><div class="inline-block w-8 h-[1px] bg-emerald-200/30"></div><div class="space-y-3 text-center"><p class="poem-text text-lg md:text-2xl font-light text-[#D8E5DC]">百年日月闲中度，八万尘劳静中消。</p><p class="poem-text text-lg md:text-2xl font-light text-[#D8E5DC]">绿水光中山影转，红炉焰上雪花飘。</p></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">沐风</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">01 / VERSE</span></div><div class="grid grid-cols-12 gap-8 items-center mb-8"><div class="col-span-5"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">钟鼎山林各天性，观月赋舒风。</p></div><div class="col-span-7 flex justify-end"><div class="img-wrapper ratio-16-9 max-w-md"><img src="DSC_3066.jpg" alt="沐风图1" /></div></div></div><div class="grid grid-cols-12 gap-8 items-center"><div class="col-span-6"><div class="img-wrapper ratio-3-2 max-w-sm"><img src="DSC_3375.jpg" alt="沐风图2" /></div></div><div class="col-span-6 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">观山向我，顺水而行，<br/>抱朴和风，万物皆我。</p></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">拂往</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">02 / VERSE</span></div><div class="grid grid-cols-12 gap-8 items-center mb-8"><div class="col-span-7 flex justify-start"><div class="img-wrapper ratio-3-2 max-w-md"><img src="DSC_3409.jpg" alt="拂往图1" /></div></div><div class="col-span-5 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">往事留痕在，清风不系之。</p></div></div><div class="grid grid-cols-12 gap-8 items-center"><div class="col-span-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">用心若镜，圣物不伤，<br/>照物不染，物过不留。</p></div><div class="col-span-6 flex justify-end"><div class="img-wrapper ratio-3-2 max-w-sm"><img src="DSC_3115.jpg" alt="拂往图2" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">性空</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">03 / VERSE</span></div><div class="text-center space-y-4 mb-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">逐梦百窗，轻盈自转。</p><div class="img-wrapper ratio-banner w-full"><img src="1.jpg" alt="性空全景" /></div></div><div class="grid grid-cols-12 gap-8 items-center"><div class="col-span-5"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">风尘洗尽心犹赤，<br/>归来依旧。</p></div><div class="col-span-7 grid grid-cols-2 gap-4"><div class="img-wrapper ratio-16-9"><img src="3_1.jpg" alt="性空图1" /></div><div class="img-wrapper ratio-16-9"><img src="3_2.jpg" alt="性空图2" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">云舒</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">04 / VERSE</span></div><div class="grid grid-cols-12 gap-10 items-center"><div class="col-span-5"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">云心无我，<br/>云我无心。</p></div><div class="col-span-7 flex justify-end"><div class="img-wrapper ratio-3-2 max-w-lg"><img src="IMG_9226.jpg" alt="云舒图" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">歌悠</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">05 / VERSE</span></div><div class="grid grid-cols-12 gap-8 items-center mb-8"><div class="col-span-5"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">短笛长歌独倚楼，<br/>万事尽随风雨去。</p></div><div class="col-span-7 flex justify-end"><div class="img-wrapper ratio-16-9 max-w-md"><img src="5_1.JPG" alt="歌悠图1" /></div></div></div><div class="grid grid-cols-12 gap-8 items-center"><div class="col-span-6 flex justify-start"><div class="img-wrapper ratio-3-2 max-w-sm"><img src="5_2.jpg" alt="歌悠图2" /></div></div><div class="col-span-6 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">岁时之间，当若不系之舟，<br/>随去住风。</p></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">观心</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">06 / VERSE</span></div><div class="grid grid-cols-12 gap-10 items-center"><div class="col-span-5"><div class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">未觉三夏尽，时序已深秋。<br/>负草石前绿，落叶出西风。<br/>万法皆心法，万境随心静。</div></div><div class="col-span-7 flex justify-end"><div class="img-wrapper ratio-3-2 max-w-xl"><img src="6.jpg" alt="观心图" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">禅叙</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">07 / VERSE</span></div><div class="grid grid-cols-12 gap-10 items-center"><div class="col-span-4"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">茶境似水，<br/>往事轻灵。</p></div><div class="col-span-8 grid grid-cols-2 gap-6"><div class="img-wrapper ratio-3-4"><img src="7_1.jpg" alt="禅叙图1" /></div><div class="img-wrapper ratio-3-4"><img src="7_2.jpg" alt="禅叙图2" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">村酒</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">08 / VERSE</span></div><div class="grid grid-cols-12 gap-8 items-center mb-8"><div class="col-span-7 flex justify-start"><div class="img-wrapper ratio-3-2 max-w-md"><img src="8_1.jpg" alt="村酒图1" /></div></div><div class="col-span-5 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">唯有沧澜月，<br/>犹似儿时明。</p></div></div><div class="grid grid-cols-12 gap-8 items-center"><div class="col-span-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">天涯何处是吾乡，<br/>蝉鸣昨日去堂堂。</p></div><div class="col-span-6 flex justify-end"><div class="img-wrapper ratio-16-9 max-w-md"><img src="8_2.jpg" alt="8_2.jpg" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">山声</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">09 / VERSE</span></div><div class="grid grid-cols-12 gap-8 items-center mb-8"><div class="col-span-7 flex justify-start"><div class="img-wrapper ratio-3-2 max-w-md"><img src="9_1.jpg" alt="山声图1" /></div></div><div class="col-span-5 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">草木皆本心，<br/>木鱼唤长醒。</p></div></div><div class="grid grid-cols-12 gap-8 items-center"><div class="col-span-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">山中何事？鸟鸣苍梧，<br/>溪边饮茶。</p></div><div class="col-span-6 flex justify-end"><div class="img-wrapper ratio-16-9 max-w-md"><img src="9_2.jpg" alt="山声图2" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content"><div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8"><p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">泊舟</p><span class="text-xs text-emerald-200/30 tracking-widest font-mono">10 / VERSE</span></div><div class="grid grid-cols-12 gap-10 items-center"><div class="col-span-5"><div class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">快舟帆满星野阔，<br/>乐钓一泓山水中。</div></div><div class="col-span-7 flex justify-end"><div class="img-wrapper ratio-3-2 max-w-xl border border-white/5"><img src="10.jpg" alt="泊舟图" /></div></div></div></div></section>
-    <section class="page-section"><div class="section-content text-center py-20"><h2 class="text-5xl md:text-7xl font-normal tracking-[0.5em] text-[#EDF4EF] opacity-90 mx-auto">沐林</h2><p class="text-base md:text-xl tracking-[0.6em] text-[#A2B8AA] font-light mt-8">原创诗文与影集</p><footer class="mt-20 opacity-40 text-[10px] tracking-[0.5em] text-[#A2B8AA]">© JOYSPACE ARCHIVE. ALL RIGHTS RESERVED.</footer></div></section>
+    <section class="page-section">
+      <div class="section-content text-center">
+        <div class="space-y-8 max-w-3xl mx-auto select-none">
+          <h1 class="text-4xl md:text-6xl font-normal tracking-[0.4em] text-[#EDF4EF]">沐林空间</h1>
+          <div class="inline-block w-8 h-[1px] bg-emerald-200/30"></div>
+          <div class="space-y-3 text-center">
+            <p class="poem-text text-lg md:text-2xl font-light text-[#D8E5DC]">百年日月闲中度，八万尘劳静中消。</p>
+            <p class="poem-text text-lg md:text-2xl font-light text-[#D8E5DC]">绿水光中山影转，红炉焰上雪花飘。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">沐风</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">01 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center mb-8">
+          <div class="col-span-5">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">钟鼎山林各天性，观月赋舒风。</p>
+          </div>
+          <div class="col-span-7 flex justify-end">
+            <div class="img-wrapper ratio-16-9 max-w-md">
+              <img src="DSC_3066.jpg" alt="沐风图1" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-6">
+            <div class="img-wrapper ratio-3-2 max-w-sm">
+              <img src="DSC_3375.jpg" alt="沐风图2" loading="lazy" />
+            </div>
+          </div>
+          <div class="col-span-6 text-right">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">观山向我，顺水而行，<br/>抱朴和风，万物皆我。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">拂往</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">02 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center mb-8">
+          <div class="col-span-7 flex justify-start">
+            <div class="img-wrapper ratio-3-2 max-w-md">
+              <img src="DSC_3409.jpg" alt="拂往图1" loading="lazy" />
+            </div>
+          </div>
+          <div class="col-span-5 text-right">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">往事留痕在，清风不系之。</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-6">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">用心若镜，圣物不伤，<br/>照物不染，物过不留。</p>
+          </div>
+          <div class="col-span-6 flex justify-end">
+            <div class="img-wrapper ratio-3-2 max-w-sm">
+              <img src="DSC_3115.jpg" alt="拂往图2" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">性空</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">03 / VERSE</span>
+        </div>
+        <div class="text-center space-y-4 mb-6">
+          <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">逐梦百窗，轻盈自转。</p>
+          <div class="img-wrapper ratio-banner w-full">
+            <img src="1.jpg" alt="性空全景" loading="lazy" />
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-5">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">风尘洗尽心犹赤，<br/>归来依旧。</p>
+          </div>
+          <div class="col-span-7 grid grid-cols-2 gap-4">
+            <div class="img-wrapper ratio-16-9">
+              <img src="3_1.jpg" alt="性空图1" loading="lazy" />
+            </div>
+            <div class="img-wrapper ratio-16-9">
+              <img src="3_2.jpg" alt="性空图2" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">云舒</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">04 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-10 items-center">
+          <div class="col-span-5">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">云心无我，<br/>云我无心。</p>
+          </div>
+          <div class="col-span-7 flex justify-end">
+            <div class="img-wrapper ratio-3-2 max-w-lg">
+              <img src="IMG_9226.jpg" alt="云舒图" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">歌悠</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">05 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center mb-8">
+          <div class="col-span-5">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">短笛长歌独倚楼，<br/>万事尽随风雨去。</p>
+          </div>
+          <div class="col-span-7 flex justify-end">
+            <div class="img-wrapper ratio-16-9 max-w-md">
+              <img src="5_1.JPG" alt="歌悠图1" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-6 flex justify-start">
+            <div class="img-wrapper ratio-3-2 max-w-sm">
+              <img src="5_2.jpg" alt="歌悠图2" loading="lazy" />
+            </div>
+          </div>
+          <div class="col-span-6 text-right">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">岁时之间，当若不系之舟，<br/>随去住风。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">观心</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">06 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-10 items-center">
+          <div class="col-span-5">
+            <div class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">未觉三夏尽，时序已深秋。<br/>负草石前绿，落叶出西风。<br/>万法皆心法，万境随心静。</div>
+          </div>
+          <div class="col-span-7 flex justify-end">
+            <div class="img-wrapper ratio-3-2 max-w-xl">
+              <img src="6.jpg" alt="观心图" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">禅叙</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">07 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-10 items-center">
+          <div class="col-span-4">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">茶境似水，<br/>往事轻灵。</p>
+          </div>
+          <div class="col-span-8 grid grid-cols-2 gap-6">
+            <div class="img-wrapper ratio-3-4">
+              <img src="7_1.jpg" alt="禅叙图1" loading="lazy" />
+            </div>
+            <div class="img-wrapper ratio-3-4">
+              <img src="7_2.jpg" alt="禅叙图2" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">村酒</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">08 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center mb-8">
+          <div class="col-span-7 flex justify-start">
+            <div class="img-wrapper ratio-3-2 max-w-md">
+              <img src="8_1.jpg" alt="村酒图1" loading="lazy" />
+            </div>
+          </div>
+          <div class="col-span-5 text-right">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">唯有沧澜月，<br/>犹似儿时明。</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-6">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">天涯何处是吾乡，<br/>蝉鸣昨日去堂堂。</p>
+          </div>
+          <div class="col-span-6 flex justify-end">
+            <div class="img-wrapper ratio-16-9 max-w-md">
+              <img src="8_2.jpg" alt="8_2.jpg" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">山声</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">09 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center mb-8">
+          <div class="col-span-7 flex justify-start">
+            <div class="img-wrapper ratio-3-2 max-w-md">
+              <img src="9_1.jpg" alt="山声图1" loading="lazy" />
+            </div>
+          </div>
+          <div class="col-span-5 text-right">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">草木皆本心，<br/>木鱼唤长醒。</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-6">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">山中何事？鸟鸣苍梧，<br/>溪边饮茶。</p>
+          </div>
+          <div class="col-span-6 flex justify-end">
+            <div class="img-wrapper ratio-16-9 max-w-md">
+              <img src="9_2.jpg" alt="山声图2" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content">
+        <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+          <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">泊舟</p>
+          <span class="text-xs text-emerald-200/30 tracking-widest font-mono">10 / VERSE</span>
+        </div>
+        <div class="grid grid-cols-12 gap-10 items-center">
+          <div class="col-span-5">
+            <div class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">快舟帆满星野阔，<br/>乐钓一泓山水中。</div>
+          </div>
+          <div class="col-span-7 flex justify-end">
+            <div class="img-wrapper ratio-3-2 max-w-xl border border-white/5">
+              <img src="10.jpg" alt="泊舟图" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="page-section">
+      <div class="section-content text-center py-20">
+        <h2 class="text-5xl md:text-7xl font-normal tracking-[0.5em] text-[#EDF4EF] opacity-90 mx-auto">沐林</h2>
+        <p class="text-base md:text-xl tracking-[0.6em] text-[#A2B8AA] font-light mt-8">原创诗文与影集</p>
+        <footer class="mt-20 opacity-40 text-[10px] tracking-[0.5em] text-[#A2B8AA]">© JOYSPACE ARCHIVE. ALL RIGHTS RESERVED.</footer>
+      </div>
+    </section>
   </div>
 </body>
 </html>
