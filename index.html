@@ -10,28 +10,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 
   <style>
-    html {
-      scroll-behavior: smooth;
+    /* 1. 开启全屏滚屏吸附（强制一页一页滑动） */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* 加载未完成时禁止滚动 */
     }
     
     body { 
       font-family: "STKaiti", "KaiTi", "SimKai", Georgia, serif; 
       background-color: #1B2A23; 
       color: #E2ECE5; 
-      margin: 0; 
-      overflow-x: hidden; 
       -webkit-font-smoothing: antialiased; 
-      overflow: hidden; /* 加载时禁止滚动 */
     }
 
-    /* === 开场 Loading 遮罩（背景换为主页竹子绿，延长1.5秒） === */
+    /* 加载完成后开启纵向吸附滚动 */
+    body.loaded {
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory; /* 核心：全屏吸附 */
+      scroll-behavior: smooth;
+    }
+
+    /* === 开场 Loading 遮罩（竹子绿背景，延时1.5秒） === */
     #loader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      /* 背景与主页 #bamboo-bg 完全相同的竹子绿渐变 */
       background: radial-gradient(circle at 50% 50%, #25382F 0%, #1B2A23 70%, #14201A 100%);
       z-index: 100;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      /* 淡出过度时间延长至 1.8s，更显柔和 */
       transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.8s ease;
     }
     
@@ -48,25 +54,32 @@
     
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
     
-    body.loaded { overflow-y: auto; }
     body.loaded #loader { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    /* === 页与页之间的滚动入场动效 === */
+    /* === 核心：页面一页页吸附与入场动画 === */
     .page-section { 
-      position: relative; width: 100%; min-height: 100vh; 
+      position: relative; 
+      width: 100vw; 
+      height: 100vh; /* 强行固定全屏 */
+      min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center; align-items: center; 
-      z-index: 10; padding: 5rem 0; box-sizing: border-box; 
+      z-index: 10; 
+      box-sizing: border-box;
+      scroll-snap-align: start; /* 滚屏吸附点 */
+      scroll-snap-stop: always;
     }
 
+    /* 未滚动到时：向下偏移 40px，透明度 0 */
     .section-content { 
       width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; 
       opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateY(40px);
+      transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
-    .page-section.visible .section-content {
+    /* 当版块被激活时：向上滑入并显示 */
+    .page-section.active .section-content {
       opacity: 1;
       transform: translateY(0);
     }
@@ -121,7 +134,7 @@
   </header>
 
   <div id="main-container" class="relative z-10 w-full">
-    <section class="page-section">
+    <section class="page-section active">
       <div class="section-content text-center">
         <div class="space-y-8 max-w-3xl mx-auto select-none">
           <h1 class="text-4xl md:text-6xl font-normal tracking-[0.4em] text-[#EDF4EF]">沐林空间</h1>
@@ -336,27 +349,28 @@
   </div>
 
   <script>
-    // 1. Loader 淡出逻辑（延长 1.5 秒停留时间，增加仪式感）
+    // 1. Loader 淡出与页面滚动解锁（延长 2 秒停留）
     window.addEventListener('load', function() {
       setTimeout(function() {
         document.body.classList.add('loaded');
-      }, 2000); // 增加至 2000ms（原本 500ms），停顿时间正好长 1.5 秒
+      }, 2000);
     });
 
-    // 2. 滚动监听：进入视口时触发上升淡入动效 (IntersectionObserver)
+    // 2. 严密的滚动观察器：每滑到新的一页，自动触发该页的上滑淡入动画
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll('.page-section');
       
       const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        threshold: 0.4 // 必须滑到页面 40% 以上才激活，保证吸附过渡自然
       };
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active'); // 移出视口重置，下次滑过来还能重复动效
           }
         });
       }, observerOptions);
