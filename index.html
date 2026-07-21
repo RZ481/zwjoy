@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyspace - 栖居沐林空间</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <style>
+    body {
+      font-family: "STKaiti", "KaiTi", "楷体", "STXingkai", Georgia, serif;
+      background-color: #1B2A23; 
+      color: #E2ECE5;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* 全局固定背景：柔和径向渐变 */
+    #bamboo-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, #25382F 0%, #1B2A23 70%, #14201A 100%);
+      overflow: hidden;
+    }
+
+    .bamboo-pillar {
+      position: absolute;
+      top: -20%;
+      height: 140%;
+      background: linear-gradient(90deg, transparent, rgba(72, 102, 85, 0.25), transparent);
+      filter: blur(40px);
+      animation: swing 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(-3deg) translateX(-20px); opacity: 0.15; }
+      100% { transform: rotate(3deg) translateX(20px); opacity: 0.3; }
+    }
+
+    .poem-text {
+      letter-spacing: 0.18em;
+      line-height: 2;
+    }
+
+    .page-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .section-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      will-change: transform, opacity;
+    }
+
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-900 selection:text-emerald-100">
+
+  <div id="loader" class="fixed inset-0 z-[100] bg-[#1B2A23] flex flex-col justify-center items-center pointer-events-none">
+    <div id="loader-text" class="text-center opacity-0 transform translate-y-4 space-y-3">
+      <div class="text-2xl md:text-4xl tracking-[0.4em] text-[#EDF4EF] font-normal">造访沐林空间</div>
+      <div class="text-xs md:text-sm tracking-[0.3em] uppercase text-[#A2B8AA] font-mono">Loading Joyspace</div>
+    </div>
+    <div id="loader-progress" class="mt-8 text-xs tracking-widest text-[#6C8A72] font-mono">0%</div>
+  </div>
+
+  <div id="bamboo-bg">
+    <div class="bamboo-pillar" style="left: 15%; width: 140px; animation-delay: 0s;"></div>
+    <div class="bamboo-pillar" style="left: 40%; width: 200px; animation-delay: -2s;"></div>
+    <div class="bamboo-pillar" style="left: 68%; width: 160px; animation-delay: -4s;"></div>
+  </div>
+
+  <header id="main-header" class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 flex justify-between items-center opacity-0 pointer-events-none">
+    <span class="text-lg tracking-[0.3em] font-normal text-[#A2B8AA]">JOYSPACE</span>
+    <span class="text-xs tracking-[0.3em] text-[#6C8A72]">诗文与影集</span>
+  </header>
+
+  <div id="main-container" class="relative z-10 w-full">
+
+    <section class="page-section px-12 md:px-24">
+      <div class="section-content">
+        <div class="text-center space-y-8 max-w-3xl select-none">
+          <h1 class="text-4xl md:text-6xl font-normal tracking-[0.4em] text-[#EDF4EF] drop-shadow-sm">沐林空间</h1>
+          <div class="inline-block w-8 h-[1px] bg-emerald-200/30"></div>
+          <div class="space-y-3 text-center">
+            <p class="poem-text text-lg md:text-2xl font-light text-[#D8E5DC]">百年日月闲中度，八万尘劳静中消。</p>
+            <p class="poem-text text-lg md:text-2xl font-light text-[#D8E5DC]">绿水光中山影转，红炉焰上雪花飘。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="absolute top-[48px] bottom-0 left-0 right-0 z-0 pointer-events-none flex justify-center items-end select-none overflow-hidden">
+          <svg class="h-full w-auto text-[#0B130F]" viewBox="0 0 300 500" fill="currentColor">
+            <g opacity="0.15" transform="rotate(-15, 60, 500)"><rect x="58" y="70" width="3.5" height="130" rx="1" /><line x1="56" y1="200" x2="63.5" y2="200" stroke="#060A08" stroke-width="1.5" /><rect x="58" y="202" width="3.5" height="160" rx="1" /><line x1="56" y1="362" x2="63.5" y2="362" stroke="#060A08" stroke-width="1.5" /><rect x="58" y="364" width="3.5" height="136" rx="1" /></g>
+            <g opacity="0.20" transform="rotate(-8, 100, 500)"><rect x="98" y="45" width="4.5" height="145" rx="1" /><line x1="96" y1="190" x2="104.5" y2="190" stroke="#060A08" stroke-width="2" /><rect x="98" y="192" width="4.5" height="175" rx="1" /><line x1="96" y1="367" x2="104.5" y2="367" stroke="#060A08" stroke-width="2" /><rect x="98" y="369" width="4.5" height="131" rx="1" /></g>
+            <g opacity="0.40"><rect x="145" y="30" width="9" height="130" rx="1" /><line x1="141" y1="160" x2="158" y2="160" stroke="#060A08" stroke-width="3" /><rect x="145" y="163" width="9" height="165" rx="1" /><line x1="141" y1="328" x2="158" y2="328" stroke="#060A08" stroke-width="3" /><rect x="145" y="331" width="9" height="169" rx="1" /></g>
+            <g opacity="0.30" transform="rotate(10, 190, 500)"><rect x="186" y="55" width="6.5" height="135" rx="1" /><line x1="183" y1="190" x2="195.5" y2="190" stroke="#060A08" stroke-width="2.5" /><rect x="186" y="192" width="6.5" height="155" rx="1" /><line x1="183" y1="347" x2="195.5" y2="347" stroke="#060A08" stroke-width="2.5" /><rect x="186" y="349" width="6.5" height="151" rx="1" /></g>
+            <g opacity="0.20" transform="rotate(18, 240, 500)"><rect x="238" y="90" width="3.5" height="115" rx="1" /><line x1="236" y1="205" x2="243.5" y2="205" stroke="#060A08" stroke-width="1.5" /><rect x="238" y="207" width="3.5" height="145" rx="1" /><line x1="236" y1="352" x2="243.5" y2="352" stroke="#060A08" stroke-width="1.5" /><rect x="238" y="354" width="3.5" height="146" rx="1" /></g>
+          </svg>
+        </div>
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">沐风</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">01 / VERSE</span>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center mt-6">
+            <div class="col-span-5"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">钟鼎山林各天性，观月赋舒风。</p></div>
+            <div class="col-span-7 flex justify-end">
+              <div class="relative w-full max-w-md aspect-video overflow-hidden rounded-sm group shadow-lg">
+                <img src="DSC_3066.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center">
+            <div class="col-span-6">
+              <div class="relative w-full max-w-sm aspect-[3/2] overflow-hidden rounded-sm group shadow-lg">
+                <img src="DSC_3375.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+              </div>
+            </div>
+            <div class="col-span-6 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">观山向我，顺水而行，<br/>抱朴和风，万物皆我。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="absolute top-[48px] bottom-0 left-0 right-0 z-0 pointer-events-none flex justify-center items-end select-none overflow-hidden">
+          <svg class="h-full w-auto text-[#0B130F]" viewBox="0 0 200 500" fill="currentColor">
+            <g opacity="0.25" transform="rotate(-6, 85, 500)"><rect x="83" y="60" width="5" height="130" rx="1" /><line x1="81" y1="190" x2="90" y2="190" stroke="#060A08" stroke-width="2" /><rect x="83" y="192" width="5" height="160" rx="1" /><line x1="81" y1="352" x2="90" y2="352" stroke="#060A08" stroke-width="2" /><rect x="83" y="354" width="5" height="146" rx="1" /></g>
+            <g opacity="0.35" transform="rotate(7, 115, 500)"><rect x="112" y="50" width="7" height="135" rx="1" /><line x1="109" y1="185" x2="122" y2="185" stroke="#060A08" stroke-width="2.5" /><rect x="112" y="187" width="7" height="165" rx="1" /><line x1="109" y1="352" x2="122" y2="352" stroke="#060A08" stroke-width="2.5" /><rect x="112" y="354" width="7" height="146" rx="1" /></g>
+          </svg>
+        </div>
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">拂往</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">02 / VERSE</span>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center mt-6">
+            <div class="col-span-7 flex justify-start">
+              <div class="relative w-full max-w-md aspect-[3/2] overflow-hidden rounded-sm group shadow-lg">
+                <img src="DSC_3409.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+              </div>
+            </div>
+            <div class="col-span-5 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">往事留痕在，清风不系之。</p></div>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center">
+            <div class="col-span-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">用心若镜，圣物不伤，<br/>照物不染，物过不留。</p></div>
+            <div class="col-span-6 flex justify-end">
+              <div class="relative w-full max-sm: max-w-sm aspect-[3/2] overflow-hidden rounded-sm group shadow-lg">
+                <img src="DSC_3115.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content flex flex-col items-center justify-center relative">
+        <div class="w-full max-w-4xl flex flex-col items-center gap-6 py-6">
+          <div class="w-full flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">性空</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">03 / VERSE</span>
+          </div>
+          <div class="w-full space-y-3 relative mt-6 pb-2 z-10 text-center">
+            <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light">逐梦百窗，轻盈自转。</p>
+            <div class="relative w-full aspect-[21/6.5] overflow-hidden rounded-sm group shadow-lg">
+              <img src="1.jpg" class="w-full h-full object-cover object-bottom" />
+            </div>
+          </div>
+          <div class="w-full grid grid-cols-12 gap-6 items-center relative z-10">
+            <div class="col-span-5 pl-10">
+              <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">风尘洗尽心犹赤，<br/>归来依旧。</p>
+            </div>
+            <div class="col-span-7 grid grid-cols-2 gap-3">
+              <div class="relative aspect-video overflow-hidden rounded-sm group shadow-lg"><img src="3_1.jpg" class="w-full h-full object-cover" /></div>
+              <div class="relative aspect-video overflow-hidden rounded-sm group shadow-lg"><img src="3_2.jpg" class="w-full h-full object-cover" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">云舒</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">04 / VERSE</span>
+          </div>
+          <div class="grid grid-cols-12 gap-10 items-center mt-8">
+            <div class="col-span-5" style="margin-left: 32px;">
+              <p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">云心无我，<br/>云我无心。</p>
+            </div>
+            <div class="col-span-7 flex justify-end" style="margin-right: 32px;">
+              <div class="relative overflow-hidden group">
+                <img src="IMG_9226.jpg" class="max-w-full max-h-[70vh] object-contain transform transition-transform duration-1000 hover:scale-105 rounded-sm shadow-xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="absolute top-[48px] bottom-0 left-0 right-0 z-0 pointer-events-none flex justify-center items-end select-none overflow-hidden">
+          <svg class="h-full w-auto text-[#0B130F]" viewBox="0 0 300 500" fill="currentColor">
+            <g opacity="0.25" transform="rotate(-10, 120, 500)"><rect x="118" y="60" width="5.5" height="140" rx="1" /><line x1="115" y1="200" x2="125" y2="200" stroke="#060A08" stroke-width="2" /><rect x="118" y="202" width="5.5" height="170" rx="1" /><line x1="115" y1="372" x2="125" y2="372" stroke="#060A08" stroke-width="2" /><rect x="118" y="374" width="5.5" height="126" rx="1" /></g>
+            <g opacity="0.20" transform="rotate(12, 190, 500)"><rect x="188" y="80" width="4" height="120" rx="1" /><line x1="186" y1="200" x2="194" y2="200" stroke="#060A08" stroke-width="1.5" /><rect x="188" y="202" width="4" height="150" rx="1" /><line x1="186" y1="352" x2="194" y2="352" stroke="#060A08" stroke-width="1.5" /><rect x="188" y="354" width="4" height="146" rx="1" /></g>
+          </svg>
+        </div>
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">歌悠</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">05 / VERSE</span>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center mt-6">
+            <div class="col-span-5"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">短笛长歌独倚楼，<br/>万事尽随风雨去。</p></div>
+            <div class="col-span-7 flex justify-end">
+              <div class="relative w-full max-w-md aspect-video overflow-hidden rounded-sm group shadow-lg"><img src="5_1.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" /></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center">
+            <div class="col-span-6 flex justify-start"><div class="relative w-full max-w-sm aspect-[3/2] overflow-hidden rounded-sm group shadow-lg"><img src="5_2.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" /></div></div>
+            <div class="col-span-6 text-right"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">岁时之间，当若不系之舟，<br/>随去住风。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">观心</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">06 / VERSE</span>
+          </div>
+          <div class="grid grid-cols-12 gap-10 items-center mt-10">
+            <div class="col-span-5 flex flex-col justify-start">
+              <div class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">未觉三夏尽，时序已深秋。<br/>负草石前绿，落叶出西风。<br/>万法皆心法，万境随心静。</div>
+            </div>
+            <div class="col-span-7 flex justify-end">
+              <div class="relative w-full max-w-2xl aspect-[3/2] overflow-hidden rounded-sm shadow-xl"><img src="6.jpg" class="w-full h-full object-cover transform transition-transform duration-1000 hover:scale-105" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative h-full">
+        <div class="w-full max-w-5xl mx-auto flex flex-col h-full relative z-10 py-12">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 mb-8">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">禅叙</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">07 / VERSE</span>
+          </div>
+          <div class="flex-grow flex items-center">
+            <div class="grid grid-cols-12 gap-12 w-full items-center">
+              <div class="col-span-4 pl-12"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">茶境似水，<br/>往事轻灵。</p></div>
+              <div class="col-span-8"><div class="grid grid-cols-2 gap-8 items-center"><div class="relative overflow-hidden group"><img src="7_1.jpg" class="w-full aspect-[3/4] object-cover max-h-[60vh] transform transition-transform duration-700 hover:scale-105 rounded-sm shadow-xl" /></div><div class="relative overflow-hidden group"><img src="7_2.jpg" class="w-full aspect-[3/4] object-cover max-h-[60vh] transform transition-transform duration-700 hover:scale-105 rounded-sm shadow-xl" /></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="absolute top-[48px] bottom-0 left-0 right-0 z-0 pointer-events-none flex justify-center items-end select-none overflow-hidden">
+          <svg class="h-full w-auto text-[#0B130F]" viewBox="0 0 250 500" fill="currentColor">
+            <g opacity="0.22" transform="rotate(-3, 125, 500)"><rect x="122" y="50" width="6" height="150" rx="1" /><line x1="119" y1="200" x2="131" y2="200" stroke="#060A08" stroke-width="2.5" /><rect x="122" y="203" width="6" height="180" rx="1" /><line x1="119" y1="383" x2="131" y2="383" stroke="#060A08" stroke-width="2.5" /><rect x="122" y="386" width="6" height="114" rx="1" /></g>
+          </svg>
+        </div>
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">村酒</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">08 / VERSE</span>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center mt-6">
+            <div class="col-span-7 flex justify-start"><div class="relative w-full max-w-md aspect-[3/2] overflow-hidden rounded-sm group shadow-lg"><img src="8_1.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" /></div></div>
+            <div class="col-span-5 text-right" style="margin-right: 32px;"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">唯有沧澜月，<br/>犹似儿时明。</p></div>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center">
+            <div class="col-span-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">天涯何处是吾乡，<br/>蝉鸣昨日去堂堂。</p></div>
+            <div class="col-span-6 flex justify-end"><div class="relative w-full max-w-md aspect-video overflow-hidden rounded-sm group shadow-lg"><img src="8_2.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" /></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="absolute top-[48px] bottom-0 left-0 right-0 z-0 pointer-events-none flex justify-center items-end select-none overflow-hidden">
+          <svg class="h-full w-auto text-[#0B130F]" viewBox="0 0 250 500" fill="currentColor">
+            <g opacity="0.22" transform="rotate(7, 125, 500)"><rect x="122" y="40" width="7" height="160" rx="1" /><line x1="118" y1="200" x2="132" y2="200" stroke="#060A08" stroke-width="2.5" /><rect x="122" y="203" width="7" height="150" rx="1" /><line x1="118" y1="353" x2="132" y2="353" stroke="#060A08" stroke-width="2.5" /><rect x="122" y="356" width="7" height="144" rx="1" /></g>
+          </svg>
+        </div>
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">山声</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">09 / VERSE</span>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center mt-6">
+            <div class="col-span-7 flex justify-start"><div class="relative w-full max-w-md aspect-[3/2] overflow-hidden rounded-sm group shadow-lg"><img src="9_1.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" /></div></div>
+            <div class="col-span-5 text-right" style="margin-right: 32px;"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">草木皆本心，<br/>木鱼唤长醒。</p></div>
+          </div>
+          <div class="grid grid-cols-12 gap-6 items-center">
+            <div class="col-span-6"><p class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">山中何事？鸟鸣苍梧，<br/>溪边饮茶。</p></div>
+            <div class="col-span-6 flex justify-end"><div class="relative w-full max-w-md aspect-video overflow-hidden rounded-sm group shadow-lg"><img src="9_2.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" /></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section px-6 md:px-20">
+      <div class="section-content relative">
+        <div class="w-full max-w-5xl mx-auto flex flex-col gap-6 justify-center py-6 relative z-10">
+          <div class="flex justify-between items-baseline border-b border-white/10 pb-3 relative z-20">
+            <p class="poem-text text-xl md:text-2xl text-[#EDF4EF] font-light">泊舟</p>
+            <span class="text-xs text-emerald-200/30 tracking-widest font-mono">10 / VERSE</span>
+          </div>
+
+          <div class="grid grid-cols-12 gap-10 items-center mt-10">
+            <div class="col-span-5 flex flex-col justify-center">
+              <div class="poem-text text-lg md:text-xl text-[#EDF4EF] font-light leading-relaxed">
+                快舟帆满星野阔，<br/>乐钓一泓山水中。
+              </div>
+            </div>
+            <div class="col-span-7 flex justify-end">
+              <div class="relative w-full max-w-2xl aspect-[3/2] overflow-hidden rounded-sm shadow-xl border border-white/5 group">
+                <img src="10.jpg" class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-8 text-center opacity-40 text-[10px] tracking-[0.5em] text-[#A2B8AA]">
+      © JOYSPACE ARCHIVE. ALL RIGHTS RESERVED.
+    </footer>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const loaderTL = gsap.timeline();
+      let prog = { value: 0 };
+      loaderTL.to('#loader-text', { opacity: 1, y: 0, duration: 1 })
+              .to(prog, { value: 100, duration: 1.2, onUpdate: () => { document.getElementById('loader-progress').textContent = Math.floor(prog.value) + '%' } }, "-=0.6")
+              .to('#loader', { opacity: 0, duration: 0.6, onComplete: () => { 
+                document.getElementById('loader').style.display = 'none'; 
+                gsap.to('#main-header', {opacity: 1, duration: 1});
+              }});
+
+      const sections = gsap.utils.toArray('.page-section');
+      sections.forEach((section, i) => {
+        const content = section.querySelector('.section-content');
+        gsap.to(content, {
+          opacity: 0, scale: 0.96, y: -25, ease: "none",
+          scrollTrigger: {
+            trigger: section, start: "top top", end: "+=12%", scrub: 0.2, pin: true, pinSpacing: true
+          }
+        });
+        if (i > 0) {
+          gsap.fromTo(content, { opacity: 0, scale: 0.96, y: 25 }, {
+            opacity: 1, scale: 1, y: 0, ease: "none",
+            scrollTrigger: {
+              trigger: section, start: "top bottom", end: "top top", scrub: 0.2
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
